@@ -40,17 +40,22 @@ public class ArticlesController {
     }
 
     @GetMapping("/{uuid}")
-    public List<ArticleDto> GetArticle (@PathVariable("uuid") String uuid){
-        List<ArticleDto> article = articlesService.findArticle(uuid);
+    public List<Articles> GetArticle (@PathVariable("uuid") String uuid){
+        List<Articles> article = articlesService.findArticle(uuid);
         return article;
     }
 
     @GetMapping
-    public List<ArticleDto> GetArticles(){
-        List<ArticleDto> article = articlesService.findAllArticles();
+    public List<Articles> GetAllArticles(){
+        List<Articles> article = articlesService.findAllArticles();
         return article;
     }
 
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity deleteArticle(@PathVariable("uuid") String uuid){
+        articlesService.deleteArticle(uuid);
+        return ResponseEntity.status(HttpStatus.OK).body("Articles deletado com sucesso.");
+    }
 
 }
 

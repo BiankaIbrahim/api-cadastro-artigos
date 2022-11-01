@@ -24,35 +24,8 @@ public class ArticleDto {
     @Embedded
     private UserDtoNameUuid userArt;
 
-    public ArticleDto(Articles articles) {
-    }
-
-    public ArticleDto(String uuid, String title, String resume, String text, String slug, LocalDateTime registeredAt) {
-    }
-
     public Articles transformToObject(){
         return new Articles(title, resume, text, getUserArt());
-    }
-
-    public static List<ArticleDto> convertListArticles(List<Articles> article){
-        return article.stream().map(ArticleDto::new).collect(Collectors.toList());
-    }
-
-
-    public static ArticleDto convertDto(Articles articles){
-        return new ArticleDto(
-                articles.getUuid(),
-                articles.getTitle(),
-                articles.getResume(),
-                articles.getText(),
-                articles.getSlug(),
-                articles.getRegisteredAt()
-        );
-
-    }
-
-    public static UserDtoResponse UserDtoResponse(Users user){
-        return new UserDtoResponse(user.getUsername(), user.getUuid(), user.getRegisteresdArt());
     }
 
 }

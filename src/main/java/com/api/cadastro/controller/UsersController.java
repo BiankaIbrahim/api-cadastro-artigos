@@ -59,27 +59,7 @@ public class UsersController {
     }
 }
 
-    /*
 
-    @PutMapping("/{uuid}")
-    public ResponseEntity updateUser(@PathVariable("uuid") String uuid, @RequestBody UserDto userDTO) {
-        if (userDTO.getUsername() == null || userDTO.getPassword() == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Username ou password não podem ser nulos");
-        } else if (userDTO.getUsername().length() < 3 || userDTO.getUsername().length() > 150) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("username deve ter tamanho mínimo de 3 caracteres e tamanho máximo de até 150 caracteres.");
-        } else if (userDTO.getPassword().length() < 8) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Password deve ter no mínimo 8 caracteres.");
-        } else if (usersService.verifyUuidUser(uuid) == false) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
-        }
-
-           //userDTO.setPassword(encoder.encode(userDTO.getPassword())); // criptografia da senha.
-           Users user = usersService.updateUser(uuid, userDTO);
-
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body(UserDtoResponse.UserDtoResponse(user));
-    }
-
-    */
 
 
 

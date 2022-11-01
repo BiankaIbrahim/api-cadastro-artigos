@@ -3,6 +3,7 @@ package com.api.cadastro.service;
 import com.api.cadastro.controller.dtos.ArticleDto;
 import com.api.cadastro.metodoUtil.CreatUuid;
 import com.api.cadastro.model.Articles;
+import com.api.cadastro.model.Users;
 import com.api.cadastro.repository.ArticlesRepository;
 import com.api.cadastro.repository.UsersRepository;
 import org.springframework.stereotype.Service;
@@ -50,13 +51,18 @@ public class ArticlesServiceImpl {
         return articlesRepository.save(newArtcle);
     }
 
-    public List<ArticleDto> findAllArticles() {
+    public List<Articles> findAllArticles() {
         List<Articles> article = articlesRepository.findAll();
-        return ArticleDto.convertListArticles(article);
+        return article;
     }
 
-    public List<ArticleDto> findArticle(String uuid){
+    public List<Articles> findArticle(String uuid){
         List<Articles> article = articlesRepository.findByUuidContains(uuid);
-        return ArticleDto.convertListArticles(article);
+        return article;
+    }
+
+    public void deleteArticle(String uuid) {
+        List<Articles> article = articlesRepository.findByUuidContains(uuid);
+        articlesRepository.deleteAllInBatch(article);
     }
 }
